@@ -5,7 +5,6 @@ var path = require('path');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
-var bodyParser = require('body-parser')
 var routes = require('./routes/routes.js');
 var config = require('./config/config.js');
 users = [];
@@ -25,7 +24,7 @@ app.use('/public', express.static('public'));
 app.use('/', routes);
 
 app.get('/public', function(req, res) {
-  res.sendFile(__dirname + 'index')
+  res.sendFile(__dirname + 'index');
 });
 
 io.sockets.on('connection', function(socket) {
@@ -45,6 +44,16 @@ socket.on('disconnect', function(data) {
   socket.on('send message', function(data) {
     io.sockets.emit('new message', {msg: data, user: socket.username});
   });
+
+  // Bot
+  socket.on('connection', function(client) {
+    client.on('message', function(message) {
+
+    });
+  });
+
+
+
 
   // New User
   socket.on('new user', function(data, callback){
