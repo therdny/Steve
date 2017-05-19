@@ -1,0 +1,52 @@
+body {
+  margin-top: 30px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.jumbotron img {
+    display: block;
+    margin: auto;
+}
+
+.jumbotron {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+#message {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+#username {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.jumbotron h1{
+  text-align: center;
+  font-weight: bold;
+  color: black;
+}
+
+.well {
+  background: #eeeeee;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-color: black;
+}
+
+.btn {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.chat {
+  display: inline;
+  margin-left: 50px;
+  margin-right: 50px;
+  
+}
