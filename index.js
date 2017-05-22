@@ -41,22 +41,13 @@ socket.on('disconnect', function(data) {
 
 
   // Send Message
-  socket.on('send message', function(data) {
-    io.sockets.emit('new message', {msg: data, user: socket.username});
+  socket.on('send_message', function(data) {
+    io.sockets.emit('new_message', {msg: data, user: socket.username});
   });
-
-  // Bot
-  socket.on('connection', function(client) {
-    client.on('message', function(message) {
-
-    });
-  });
-
-
 
 
   // New User
-  socket.on('new user', function(data, callback){
+  socket.on('new_user', function(data, callback){
     callback(true);
     socket.username = data;
     users.push(socket.username);

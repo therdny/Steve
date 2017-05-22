@@ -7,37 +7,42 @@ $(function () {
 	var $userFormArea = $('#userFormArea');
 	var $userForm = $('#userForm');
 	var $username = $('#username');
-	
+	var lastmessage  
+
+
 	$messageForm.submit(function(e) {
 		e.preventDefault();
-		socket.emit('send message', $message.val());
-		$message.val('');
+		lastmessage = $message.val()
+		socket.emit('send_message', lastmessage);
+	 	$message.val('');
 	});
 
-	socket.on('new message', function(data) {
+	socket.on('new_message', function(data) {
+		console.log(data);
 		$chat.append('<div class="well"><strong>'+data.user+'</strong>: '+data.msg+'</div>');
-		if (message === "Hello") {
-			$chat.append('<div class="well"><strong>Steve th3 chatter:</strong> I have already said Hello '+$('#username')+'</div>');
+		if (data.msg === "Hello") {
+			console.log(data.msg);
+			$chat.append('<div class="well"><strong>Steve th3 chatter:</strong> I have already said Hello '+data.user+'</div>');
 		}
 
-		else if (message === "What time is it?") {
+		else if (data.msg === "What time is it?") {
 			$chat.append('<div class="well"><strong>Steve th3 chatter:</strong> It is goooo time!</div>');
 		}
 		
-		else if (message === "What year is it?") {
-			$chat.append('<div class="well"><strong>Steve th3 chatter:</strong> It is your year '+$('#username')+'</div>');
+		else if (data.msg === "What year is it?") {
+			$chat.append('<div class="well"><strong>Steve th3 chatter:</strong> It is your year '+data.user+'</div>');
 		}
 
-		else if (message === "Do you own a Mac?" || "Do you have a Mac?") {
+		else if (data.msg === "Do you own a mac?" || data.msg === "Do you have a mac?") {
 			$chat.append('<div class="well"><strong>Steve th3 chatter:</strong> Dude, I created the fucking thing!</div>');
 		}
 
-		else if (message === "Who are you?") {
-			$chat.append('<div class="well"><strong>Steve th3 chatter:</strong> I can be whoever you want me to be, '+$('#username')+'</div>');
+		else if (data.msg === "Who are you?") {
+			$chat.append('<div class="well"><strong>Steve th3 chatter:</strong> I am Jobs, Steve Jobs!</div>');
 		}
 
-		else if (message === "Goodbye") {
-			$chat.append('<div class="well"><strong>Steve th3 chatter:</strong> Goodbye '+$('#username')+'. Hope you enjoyed your stay.</div>');
+		else if (data.msg === "Goodbye") {
+			$chat.append('<div class="well"><strong>Steve th3 chatter:</strong> Goodbye '+data.user+'. Hope you enjoyed your stay.</div>');
 		}
 
 		else {
@@ -49,34 +54,19 @@ $(function () {
 
 	$userForm.submit(function(e) {
 		e.preventDefault();
-		socket.emit('new user', $username.val(), function(data) {
+			console.log($username.val());
+			socket.emit('new_user', $username.val(), function(data) {
+			console.log(data);
 			socket.username = $username.val();
 			if(data) {
 				$userFormArea.hide();
 				$messageArea.show();
-				$chat.append('<div class="well"><strong>Steve th3 chatter:</strong> Hello '+$('#username')+'. Try asking me what time or year it is, if I have a mac, who I am or just say goodbye.</div>');
+				$chat.append('<div class="well"><strong>Steve th3 chatter:</strong> Welcome! Try asking me what time or year it is, if I have a mac, who I am or just say goodbye.</div>');
 			}
 		});
 		$username.val('');
 
 	});
-
-	// Bot
-
-
-
-$("#message").keyup(function(event){
-    if(event.keyCode == 13){
-        $("#submitMessage").click();
-    }
-});
-
-$("#username").keyup(function(event){
-    if(event.keyCode == 13){
-        $("#submitUser").click();
-    }
-});
-
 
 });
 
