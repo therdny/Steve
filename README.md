@@ -8,6 +8,7 @@
  * CSS
  * Socket.IO
  * Express.JS
+ * Pug
  * jQuery
  * Bootstrap
  * Photoshop
