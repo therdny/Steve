@@ -16,7 +16,7 @@ var eventEmitter = new events.EventEmitter();
 
 // Server
 
-server.listen(port);
+app.listen(port);
   console.log(`|  \x1b[34mCHATSERVER\x1b[37m - Running on port: \x1b[36m3000 \x1b[37m|`);
 
 app.set('view engine', 'pug');
