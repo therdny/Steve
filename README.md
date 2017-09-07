@@ -1,5 +1,7 @@
 # Steve Th3 Chatbot // SLUTPROJEKT - JAVASCRIPT FRONTEND
 
+###### For live version, please visit https://steve-th3-chatter.herokuapp.com/.
+
 ###### STEVE TH3 CHATBOT är mitt slutprojekt för kursen Avancerad Webbapplikationsutveckling för utbildningen Front-End utvecklare på [Lernia Högskoleutbildning](https://www.lernia.se/)
 
 ###### Använda teknologier & program:
