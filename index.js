@@ -7,6 +7,7 @@ var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 var routes = require('./routes/routes.js');
 var config = require('./config/config.js');
+const port = process.env.PORT || 4000;
 users = [];
 connections = [];
 
@@ -15,7 +16,7 @@ var eventEmitter = new events.EventEmitter();
 
 // Server
 
-server.listen(process.env.PORT || 3000);
+server.listen(port);
   console.log(`|  \x1b[34mCHATSERVER\x1b[37m - Running on port: \x1b[36m3000 \x1b[37m|`);
 
 app.set('view engine', 'pug');
