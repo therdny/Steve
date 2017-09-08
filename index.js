@@ -3,7 +3,7 @@
 var express = require('express');
 var path = require('path');
 var app = express();
-var server = require('http').createServer(app);
+var server = require('https').createServer(app);
 var io = require('socket.io').listen(server);
 var routes = require('./routes/routes.js');
 var config = require('./config/config.js');
@@ -16,7 +16,7 @@ var eventEmitter = new events.EventEmitter();
 
 // Server
 
-app.listen(port);
+server.listen(port);
   console.log(`|  \x1b[34mCHATSERVER\x1b[37m - Running on port: \x1b[36m3000 \x1b[37m|`);
 
 app.set('view engine', 'pug');
